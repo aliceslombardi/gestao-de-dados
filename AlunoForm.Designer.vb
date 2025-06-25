@@ -15,9 +15,12 @@ Partial Class AlunoForm
         Me.lblDataNascimento = New System.Windows.Forms.Label()
         Me.lblEmail = New System.Windows.Forms.Label()
         Me.lblTelefone = New System.Windows.Forms.Label()
+        Me.lblCurso = New System.Windows.Forms.Label()
+        Me.cmbCursos = New System.Windows.Forms.ComboBox()
         Me.btnAdicionar = New System.Windows.Forms.Button()
         Me.btnAtualizar = New System.Windows.Forms.Button()
         Me.btnExcluir = New System.Windows.Forms.Button()
+        Me.btnInscrever = New System.Windows.Forms.Button()
         CType(Me.dgvAlunos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -99,12 +102,30 @@ Partial Class AlunoForm
         Me.lblTelefone.TabIndex = 10
         Me.lblTelefone.Text = "Telefone"
         '
+        'lblCurso
+        '
+        Me.lblCurso.AutoSize = True
+        Me.lblCurso.Location = New System.Drawing.Point(12, 145)
+        Me.lblCurso.Name = "lblCurso"
+        Me.lblCurso.Size = New System.Drawing.Size(34, 13)
+        Me.lblCurso.TabIndex = 11
+        Me.lblCurso.Text = "Curso"
+        '
+        'cmbCursos
+        '
+        Me.cmbCursos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbCursos.FormattingEnabled = True
+        Me.cmbCursos.Location = New System.Drawing.Point(118, 142)
+        Me.cmbCursos.Name = "cmbCursos"
+        Me.cmbCursos.Size = New System.Drawing.Size(200, 21)
+        Me.cmbCursos.TabIndex = 6
+        '
         'btnAdicionar
         '
         Me.btnAdicionar.Location = New System.Drawing.Point(340, 38)
         Me.btnAdicionar.Name = "btnAdicionar"
         Me.btnAdicionar.Size = New System.Drawing.Size(75, 23)
-        Me.btnAdicionar.TabIndex = 11
+        Me.btnAdicionar.TabIndex = 12
         Me.btnAdicionar.Text = "Adicionar"
         Me.btnAdicionar.UseVisualStyleBackColor = True
         '
@@ -113,7 +134,7 @@ Partial Class AlunoForm
         Me.btnAtualizar.Location = New System.Drawing.Point(340, 64)
         Me.btnAtualizar.Name = "btnAtualizar"
         Me.btnAtualizar.Size = New System.Drawing.Size(75, 23)
-        Me.btnAtualizar.TabIndex = 12
+        Me.btnAtualizar.TabIndex = 13
         Me.btnAtualizar.Text = "Atualizar"
         Me.btnAtualizar.UseVisualStyleBackColor = True
         '
@@ -122,9 +143,18 @@ Partial Class AlunoForm
         Me.btnExcluir.Location = New System.Drawing.Point(340, 90)
         Me.btnExcluir.Name = "btnExcluir"
         Me.btnExcluir.Size = New System.Drawing.Size(75, 23)
-        Me.btnExcluir.TabIndex = 13
+        Me.btnExcluir.TabIndex = 14
         Me.btnExcluir.Text = "Excluir"
         Me.btnExcluir.UseVisualStyleBackColor = True
+        '
+        'btnInscrever
+        '
+        Me.btnInscrever.Location = New System.Drawing.Point(340, 116)
+        Me.btnInscrever.Name = "btnInscrever"
+        Me.btnInscrever.Size = New System.Drawing.Size(75, 23)
+        Me.btnInscrever.TabIndex = 15
+        Me.btnInscrever.Text = "Inscrever"
+        Me.btnInscrever.UseVisualStyleBackColor = True
         '
         'AlunoForm
         '
@@ -136,6 +166,9 @@ Partial Class AlunoForm
         Me.Controls.Add(Me.btnAdicionar)
         Me.Controls.Add(Me.lblEmail)
         Me.Controls.Add(Me.lblTelefone)
+        Me.Controls.Add(Me.btnInscrever)
+        Me.Controls.Add(Me.cmbCursos)
+        Me.Controls.Add(Me.lblCurso)
         Me.Controls.Add(Me.lblDataNascimento)
         Me.Controls.Add(Me.lblNomeAluno)
         Me.Controls.Add(Me.txtEmail)
@@ -160,7 +193,10 @@ Partial Class AlunoForm
     Friend WithEvents lblDataNascimento As Label
     Friend WithEvents lblEmail As Label
     Friend WithEvents lblTelefone As Label
+    Friend WithEvents lblCurso As Label
+    Friend WithEvents cmbCursos As ComboBox
     Friend WithEvents btnAdicionar As Button
     Friend WithEvents btnAtualizar As Button
     Friend WithEvents btnExcluir As Button
+    Friend WithEvents btnInscrever As Button
 End Class

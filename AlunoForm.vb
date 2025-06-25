@@ -7,6 +7,7 @@ Public Class AlunoForm
 
     Private Sub AlunoForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CarregarAlunos()
+        CarregarCursosAtivos()
         LimparCampos()
     End Sub
 
@@ -34,6 +35,21 @@ Public Class AlunoForm
             MessageBox.Show($"Erro ao carregar alunos: {ex.Message}")
         Finally
             carregando = False
+        End Try
+    End Sub
+
+    Private Sub CarregarCursosAtivos()
+        Try
+            Using conn As New SqlConnection(connectionString)
+                Dim adapter As New SqlDataAdapter("SELECT CursoID, Nome FROM Cursos WHERE DataInicio <= GETDATE() AND DataFim >= GETDATE()", conn)
+                Dim table As New DataTable()
+                adapter.Fill(table)
+                cmbCursos.DataSource = table
+                cmbCursos.DisplayMember = "Nome"
+                cmbCursos.ValueMember = "CursoID"
+            End Using
+        Catch ex As Exception
+            MessageBox.Show($"Erro ao carregar cursos: {ex.Message}")
         End Try
     End Sub
 
@@ -120,5 +136,32 @@ Public Class AlunoForm
         Else
             LimparCampos()
         End If
+    End Sub
+
+    Private Sub btnInscrever_Click(sender As Object, e As EventArgs) Handles btnInscrever.Click
+        If dgvAlunos.SelectedRows.Count = 0 Then
+            MessageBox.Show("Selecione um aluno para inscrever.")
+            Return
+        End If
+
+        If cmbCursos.SelectedValue Is Nothing Then
+            MessageBox.Show("Selecione um curso.")
+            Return
+        End If
+
+        Try
+            Dim alunoId As Integer = CInt(dgvAlunos.SelectedRows(0).Cells("FormandoID").Value)
+            Dim cursoId As Integer = CInt(cmbCursos.SelectedValue)
+            Using conn As New SqlConnection(connectionString)
+                Dim cmd As New SqlCommand("INSERT INTO Inscricoes (FormandoID, CursoID) VALUES (@FormandoID, @CursoID)", conn)
+                cmd.Parameters.AddWithValue("@FormandoID", alunoId)
+                cmd.Parameters.AddWithValue("@CursoID", cursoId)
+                conn.Open()
+                cmd.ExecuteNonQuery()
+            End Using
+            MessageBox.Show("Aluno inscrito com sucesso.")
+        Catch ex As Exception
+            MessageBox.Show($"Erro ao inscrever aluno: {ex.Message}")
+        End Try
     End Sub
 End Class
