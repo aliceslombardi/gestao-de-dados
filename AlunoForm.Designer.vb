@@ -21,6 +21,7 @@ Partial Class AlunoForm
         Me.btnAdicionar = New System.Windows.Forms.Button()
         Me.btnAtualizar = New System.Windows.Forms.Button()
         Me.btnExcluir = New System.Windows.Forms.Button()
+        Me.btnNovo = New System.Windows.Forms.Button()
         CType(Me.dgvAlunos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -146,13 +147,21 @@ Partial Class AlunoForm
         Me.btnExcluir.TabIndex = 13
         Me.btnExcluir.Text = "Excluir"
         Me.btnExcluir.UseVisualStyleBackColor = True
+
+        'btnNovo
+        Me.btnNovo.Location = New System.Drawing.Point(340, 116)
+        Me.btnNovo.Name = "btnNovo"
+        Me.btnNovo.Size = New System.Drawing.Size(75, 23)
+        Me.btnNovo.TabIndex = 14
+        Me.btnNovo.Text = "Novo"
+        Me.btnNovo.UseVisualStyleBackColor = True
         '
         'btnVoltar
         '
         Me.btnVoltar.Location = New System.Drawing.Point(12, 386)
         Me.btnVoltar.Name = "btnVoltar"
         Me.btnVoltar.Size = New System.Drawing.Size(75, 23)
-        Me.btnVoltar.TabIndex = 14
+        Me.btnVoltar.TabIndex = 15
         Me.btnVoltar.Text = "Voltar"
         Me.btnVoltar.UseVisualStyleBackColor = True
         '
@@ -162,6 +171,7 @@ Partial Class AlunoForm
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(584, 415)
         Me.Controls.Add(Me.btnVoltar)
+        Me.Controls.Add(Me.btnNovo)
         Me.Controls.Add(Me.btnExcluir)
         Me.Controls.Add(Me.btnAtualizar)
         Me.Controls.Add(Me.btnAdicionar)
@@ -198,5 +208,6 @@ Partial Class AlunoForm
     Friend WithEvents btnAdicionar As Button
     Friend WithEvents btnAtualizar As Button
     Friend WithEvents btnExcluir As Button
+    Friend WithEvents btnNovo As Button
     Friend WithEvents btnVoltar As Button
 End Class
