@@ -126,11 +126,21 @@ Partial Class AlunoForm
         Me.btnExcluir.Text = "Excluir"
         Me.btnExcluir.UseVisualStyleBackColor = True
         '
+        'btnVoltar
+        '
+        Me.btnVoltar.Location = New System.Drawing.Point(12, 360)
+        Me.btnVoltar.Name = "btnVoltar"
+        Me.btnVoltar.Size = New System.Drawing.Size(75, 23)
+        Me.btnVoltar.TabIndex = 14
+        Me.btnVoltar.Text = "Voltar"
+        Me.btnVoltar.UseVisualStyleBackColor = True
+        '
         'AlunoForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(584, 353)
+        Me.ClientSize = New System.Drawing.Size(584, 389)
+        Me.Controls.Add(Me.btnVoltar)
         Me.Controls.Add(Me.btnExcluir)
         Me.Controls.Add(Me.btnAtualizar)
         Me.Controls.Add(Me.btnAdicionar)
@@ -163,4 +173,5 @@ Partial Class AlunoForm
     Friend WithEvents btnAdicionar As Button
     Friend WithEvents btnAtualizar As Button
     Friend WithEvents btnExcluir As Button
+    Friend WithEvents btnVoltar As Button
 End Class

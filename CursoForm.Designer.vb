@@ -152,11 +152,21 @@ Partial Class CursoForm
         Me.btnNovo.Text = "Novo"
         Me.btnNovo.UseVisualStyleBackColor = True
         '
+        'btnVoltar
+        '
+        Me.btnVoltar.Location = New System.Drawing.Point(12, 386)
+        Me.btnVoltar.Name = "btnVoltar"
+        Me.btnVoltar.Size = New System.Drawing.Size(75, 23)
+        Me.btnVoltar.TabIndex = 16
+        Me.btnVoltar.Text = "Voltar"
+        Me.btnVoltar.UseVisualStyleBackColor = True
+        '
         'CursoForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(584, 379)
+        Me.ClientSize = New System.Drawing.Size(584, 415)
+        Me.Controls.Add(Me.btnVoltar)
         Me.Controls.Add(Me.btnNovo)
         Me.Controls.Add(Me.btnExcluir)
         Me.Controls.Add(Me.btnAtualizar)
@@ -195,4 +205,5 @@ Partial Class CursoForm
     Friend WithEvents btnAtualizar As Button
     Friend WithEvents btnExcluir As Button
     Friend WithEvents btnNovo As Button
+    Friend WithEvents btnVoltar As Button
 End Class
