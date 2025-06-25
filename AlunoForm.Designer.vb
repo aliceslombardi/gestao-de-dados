@@ -11,6 +11,8 @@ Partial Class AlunoForm
         Me.dtpDataNascimento = New System.Windows.Forms.DateTimePicker()
         Me.txtEmail = New System.Windows.Forms.TextBox()
         Me.txtTelefone = New System.Windows.Forms.TextBox()
+        Me.cboCursos = New System.Windows.Forms.ComboBox()
+        Me.lblCurso = New System.Windows.Forms.Label()
         Me.lblNomeAluno = New System.Windows.Forms.Label()
         Me.lblDataNascimento = New System.Windows.Forms.Label()
         Me.lblEmail = New System.Windows.Forms.Label()
@@ -27,7 +29,7 @@ Partial Class AlunoForm
         Me.dgvAlunos.AllowUserToAddRows = False
         Me.dgvAlunos.AllowUserToDeleteRows = False
         Me.dgvAlunos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvAlunos.Location = New System.Drawing.Point(12, 150)
+        Me.dgvAlunos.Location = New System.Drawing.Point(12, 176)
         Me.dgvAlunos.MultiSelect = False
         Me.dgvAlunos.Name = "dgvAlunos"
         Me.dgvAlunos.ReadOnly = True
@@ -63,6 +65,24 @@ Partial Class AlunoForm
         Me.txtTelefone.Name = "txtTelefone"
         Me.txtTelefone.Size = New System.Drawing.Size(200, 20)
         Me.txtTelefone.TabIndex = 5
+
+        'cboCursos
+        '
+        Me.cboCursos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboCursos.FormattingEnabled = True
+        Me.cboCursos.Location = New System.Drawing.Point(118, 142)
+        Me.cboCursos.Name = "cboCursos"
+        Me.cboCursos.Size = New System.Drawing.Size(200, 21)
+        Me.cboCursos.TabIndex = 6
+
+        'lblCurso
+        '
+        Me.lblCurso.AutoSize = True
+        Me.lblCurso.Location = New System.Drawing.Point(12, 145)
+        Me.lblCurso.Name = "lblCurso"
+        Me.lblCurso.Size = New System.Drawing.Size(34, 13)
+        Me.lblCurso.TabIndex = 15
+        Me.lblCurso.Text = "Curso"
         '
         'lblNomeAluno
         '
@@ -129,7 +149,7 @@ Partial Class AlunoForm
         '
         'btnVoltar
         '
-        Me.btnVoltar.Location = New System.Drawing.Point(12, 360)
+        Me.btnVoltar.Location = New System.Drawing.Point(12, 386)
         Me.btnVoltar.Name = "btnVoltar"
         Me.btnVoltar.Size = New System.Drawing.Size(75, 23)
         Me.btnVoltar.TabIndex = 14
@@ -140,7 +160,7 @@ Partial Class AlunoForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(584, 389)
+        Me.ClientSize = New System.Drawing.Size(584, 415)
         Me.Controls.Add(Me.btnVoltar)
         Me.Controls.Add(Me.btnExcluir)
         Me.Controls.Add(Me.btnAtualizar)
@@ -151,6 +171,8 @@ Partial Class AlunoForm
         Me.Controls.Add(Me.lblNomeAluno)
         Me.Controls.Add(Me.txtEmail)
         Me.Controls.Add(Me.txtTelefone)
+        Me.Controls.Add(Me.cboCursos)
+        Me.Controls.Add(Me.lblCurso)
         Me.Controls.Add(Me.dtpDataNascimento)
         Me.Controls.Add(Me.txtNomeAluno)
         Me.Controls.Add(Me.dgvAlunos)
@@ -167,6 +189,8 @@ Partial Class AlunoForm
     Friend WithEvents dtpDataNascimento As DateTimePicker
     Friend WithEvents txtEmail As TextBox
     Friend WithEvents txtTelefone As TextBox
+    Friend WithEvents cboCursos As ComboBox
+    Friend WithEvents lblCurso As Label
     Friend WithEvents lblNomeAluno As Label
     Friend WithEvents lblDataNascimento As Label
     Friend WithEvents lblEmail As Label

@@ -1,5 +1,6 @@
 Imports System.Configuration
 Imports System.Data.SqlClient
+Imports System.Data
 
 Public Class AlunoForm
     Private connectionString As String = ConfigurationManager.ConnectionStrings("FormacaoDB").ConnectionString
@@ -7,6 +8,7 @@ Public Class AlunoForm
 
     Private Sub AlunoForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CarregarAlunos()
+        CarregarCursosAtivos()
         LimparCampos()
     End Sub
 
@@ -15,6 +17,7 @@ Public Class AlunoForm
         dtpDataNascimento.Value = Date.Today
         txtEmail.Clear()
         txtTelefone.Clear()
+        cboCursos.SelectedIndex = -1
     End Sub
 
     Private Sub CarregarAlunos()
@@ -34,6 +37,23 @@ Public Class AlunoForm
             MessageBox.Show($"Erro ao carregar alunos: {ex.Message}")
         Finally
             carregando = False
+        End Try
+    End Sub
+
+    Private Sub CarregarCursosAtivos()
+        Try
+            Using conn As New SqlConnection(connectionString)
+                Dim cmd As New SqlCommand("SELECT CursoID, Nome FROM Cursos WHERE DataFim >= @Hoje", conn)
+                cmd.Parameters.AddWithValue("@Hoje", Date.Today)
+                Dim adapter As New SqlDataAdapter(cmd)
+                Dim table As New DataTable()
+                adapter.Fill(table)
+                cboCursos.DisplayMember = "Nome"
+                cboCursos.ValueMember = "CursoID"
+                cboCursos.DataSource = table
+            End Using
+        Catch ex As Exception
+            MessageBox.Show($"Erro ao carregar cursos: {ex.Message}")
         End Try
     End Sub
 
