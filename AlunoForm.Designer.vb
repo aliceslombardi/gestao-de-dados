@@ -7,12 +7,10 @@ Partial Class AlunoForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.dgvAlunos = New System.Windows.Forms.DataGridView()
-        Me.txtIDFormando = New System.Windows.Forms.TextBox()
         Me.txtNomeAluno = New System.Windows.Forms.TextBox()
         Me.dtpDataNascimento = New System.Windows.Forms.DateTimePicker()
         Me.txtEmail = New System.Windows.Forms.TextBox()
         Me.txtIDCurso = New System.Windows.Forms.TextBox()
-        Me.lblIDFormando = New System.Windows.Forms.Label()
         Me.lblNomeAluno = New System.Windows.Forms.Label()
         Me.lblDataNascimento = New System.Windows.Forms.Label()
         Me.lblEmail = New System.Windows.Forms.Label()
@@ -35,13 +33,6 @@ Partial Class AlunoForm
         Me.dgvAlunos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvAlunos.Size = New System.Drawing.Size(560, 200)
         Me.dgvAlunos.TabIndex = 0
-        '
-        'txtIDFormando
-        '
-        Me.txtIDFormando.Location = New System.Drawing.Point(118, 12)
-        Me.txtIDFormando.Name = "txtIDFormando"
-        Me.txtIDFormando.Size = New System.Drawing.Size(100, 20)
-        Me.txtIDFormando.TabIndex = 1
         '
         'txtNomeAluno
         '
@@ -72,14 +63,6 @@ Partial Class AlunoForm
         Me.txtIDCurso.Size = New System.Drawing.Size(100, 20)
         Me.txtIDCurso.TabIndex = 5
         '
-        'lblIDFormando
-        '
-        Me.lblIDFormando.AutoSize = True
-        Me.lblIDFormando.Location = New System.Drawing.Point(12, 15)
-        Me.lblIDFormando.Name = "lblIDFormando"
-        Me.lblIDFormando.Size = New System.Drawing.Size(63, 13)
-        Me.lblIDFormando.TabIndex = 6
-        Me.lblIDFormando.Text = "IDFormando"
         '
         'lblNomeAluno
         '
@@ -156,12 +139,10 @@ Partial Class AlunoForm
         Me.Controls.Add(Me.lblEmail)
         Me.Controls.Add(Me.lblDataNascimento)
         Me.Controls.Add(Me.lblNomeAluno)
-        Me.Controls.Add(Me.lblIDFormando)
         Me.Controls.Add(Me.txtIDCurso)
         Me.Controls.Add(Me.txtEmail)
         Me.Controls.Add(Me.dtpDataNascimento)
         Me.Controls.Add(Me.txtNomeAluno)
-        Me.Controls.Add(Me.txtIDFormando)
         Me.Controls.Add(Me.dgvAlunos)
         Me.Name = "AlunoForm"
         Me.Text = "Alunos"
@@ -172,12 +153,10 @@ Partial Class AlunoForm
     End Sub
 
     Friend WithEvents dgvAlunos As DataGridView
-    Friend WithEvents txtIDFormando As TextBox
     Friend WithEvents txtNomeAluno As TextBox
     Friend WithEvents dtpDataNascimento As DateTimePicker
     Friend WithEvents txtEmail As TextBox
     Friend WithEvents txtIDCurso As TextBox
-    Friend WithEvents lblIDFormando As Label
     Friend WithEvents lblNomeAluno As Label
     Friend WithEvents lblDataNascimento As Label
     Friend WithEvents lblEmail As Label

@@ -1,5 +1,6 @@
 Public Class AlunoForm
     Private alunosTable As New DataTable()
+    Private nextId As Integer = 1
 
     Private Sub AlunoForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Definindo colunas da tabela em memória
@@ -12,21 +13,22 @@ Public Class AlunoForm
         End With
 
         dgvAlunos.DataSource = alunosTable
+        dgvAlunos.Columns("IDFormando").Visible = False
     End Sub
 
     Private Sub btnAdicionar_Click(sender As Object, e As EventArgs) Handles btnAdicionar.Click
         alunosTable.Rows.Add(
-            CInt(txtIDFormando.Text),
+            nextId,
             txtNomeAluno.Text,
             dtpDataNascimento.Value,
             txtEmail.Text,
             CInt(txtIDCurso.Text))
+        nextId += 1
     End Sub
 
     Private Sub btnAtualizar_Click(sender As Object, e As EventArgs) Handles btnAtualizar.Click
         If dgvAlunos.SelectedRows.Count > 0 Then
             Dim row = dgvAlunos.SelectedRows(0)
-            row.Cells("IDFormando").Value = CInt(txtIDFormando.Text)
             row.Cells("NomeAluno").Value = txtNomeAluno.Text
             row.Cells("DataNascimento").Value = dtpDataNascimento.Value
             row.Cells("Email").Value = txtEmail.Text
@@ -43,7 +45,6 @@ Public Class AlunoForm
     Private Sub dgvAlunos_SelectionChanged(sender As Object, e As EventArgs) Handles dgvAlunos.SelectionChanged
         If dgvAlunos.SelectedRows.Count > 0 Then
             Dim row = dgvAlunos.SelectedRows(0)
-            txtIDFormando.Text = row.Cells("IDFormando").Value.ToString()
             txtNomeAluno.Text = row.Cells("NomeAluno").Value.ToString()
             dtpDataNascimento.Value = CDate(row.Cells("DataNascimento").Value)
             txtEmail.Text = row.Cells("Email").Value.ToString()
