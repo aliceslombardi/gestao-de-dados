@@ -2,7 +2,6 @@
 Partial Class Form1
     Inherits System.Windows.Forms.Form
 
-    'Descartar substituições de formulário para limpar a lista de componentes.
     <System.Diagnostics.DebuggerNonUserCode()> _
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
@@ -14,12 +13,8 @@ Partial Class Form1
         End Try
     End Sub
 
-    'Exigido pelo Windows Form Designer
     Private components As System.ComponentModel.IContainer
 
-    'OBSERVAÇÃO: o procedimento a seguir é exigido pelo Windows Form Designer
-    'Pode ser modificado usando o Windows Form Designer.  
-    'Não o modifique usando o editor de códigos.
 
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
@@ -27,9 +22,6 @@ Partial Class Form1
         Me.btnAlunos = New System.Windows.Forms.Button()
         Me.btnCursos = New System.Windows.Forms.Button()
         Me.SuspendLayout()
-        '
-        'lblTitulo
-        '
         Me.lblTitulo.AutoSize = False
         Me.lblTitulo.Dock = System.Windows.Forms.DockStyle.Top
         Me.lblTitulo.Font = New System.Drawing.Font("Segoe UI", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
@@ -40,9 +32,6 @@ Partial Class Form1
         Me.lblTitulo.TabIndex = 0
         Me.lblTitulo.Text = "Gestão de Dados"
         Me.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'btnAlunos
-        '
         Me.btnAlunos.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.btnAlunos.Location = New System.Drawing.Point(45, 60)
         Me.btnAlunos.Name = "btnAlunos"
@@ -50,9 +39,6 @@ Partial Class Form1
         Me.btnAlunos.TabIndex = 1
         Me.btnAlunos.Text = "Gerir Alunos"
         Me.btnAlunos.UseVisualStyleBackColor = True
-        '
-        'btnCursos
-        '
         Me.btnCursos.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.btnCursos.Location = New System.Drawing.Point(45, 110)
         Me.btnCursos.Name = "btnCursos"
@@ -60,9 +46,6 @@ Partial Class Form1
         Me.btnCursos.TabIndex = 2
         Me.btnCursos.Text = "Gerir Cursos"
         Me.btnCursos.UseVisualStyleBackColor = True
-        '
-        'Form1
-        '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.WhiteSmoke

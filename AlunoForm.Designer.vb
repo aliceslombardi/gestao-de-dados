@@ -24,9 +24,6 @@ Partial Class AlunoForm
         Me.btnNovo = New System.Windows.Forms.Button()
         CType(Me.dgvAlunos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'dgvAlunos
-        '
         Me.dgvAlunos.AllowUserToAddRows = False
         Me.dgvAlunos.AllowUserToDeleteRows = False
         Me.dgvAlunos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -37,38 +34,24 @@ Partial Class AlunoForm
         Me.dgvAlunos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvAlunos.Size = New System.Drawing.Size(560, 200)
         Me.dgvAlunos.TabIndex = 0
-        '
-        'txtNomeAluno
-        '
         Me.txtNomeAluno.Location = New System.Drawing.Point(118, 38)
         Me.txtNomeAluno.Name = "txtNomeAluno"
         Me.txtNomeAluno.Size = New System.Drawing.Size(200, 20)
         Me.txtNomeAluno.TabIndex = 2
-        '
-        'dtpDataNascimento
-        '
         Me.dtpDataNascimento.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.dtpDataNascimento.Location = New System.Drawing.Point(118, 64)
         Me.dtpDataNascimento.Name = "dtpDataNascimento"
         Me.dtpDataNascimento.Size = New System.Drawing.Size(100, 20)
         Me.dtpDataNascimento.TabIndex = 3
-        '
-        'txtEmail
-        '
         Me.txtEmail.Location = New System.Drawing.Point(118, 90)
         Me.txtEmail.Name = "txtEmail"
         Me.txtEmail.Size = New System.Drawing.Size(200, 20)
         Me.txtEmail.TabIndex = 4
-        '
-        'txtTelefone
-        '
         Me.txtTelefone.Location = New System.Drawing.Point(118, 116)
         Me.txtTelefone.Name = "txtTelefone"
         Me.txtTelefone.Size = New System.Drawing.Size(200, 20)
         Me.txtTelefone.TabIndex = 5
 
-        'cboCursos
-        '
         Me.cboCursos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboCursos.FormattingEnabled = True
         Me.cboCursos.Location = New System.Drawing.Point(118, 142)
@@ -76,71 +59,48 @@ Partial Class AlunoForm
         Me.cboCursos.Size = New System.Drawing.Size(200, 21)
         Me.cboCursos.TabIndex = 6
 
-        'lblCurso
-        '
         Me.lblCurso.AutoSize = True
         Me.lblCurso.Location = New System.Drawing.Point(12, 145)
         Me.lblCurso.Name = "lblCurso"
         Me.lblCurso.Size = New System.Drawing.Size(34, 13)
         Me.lblCurso.TabIndex = 15
         Me.lblCurso.Text = "Curso"
-        '
-        'lblNomeAluno
-        '
         Me.lblNomeAluno.AutoSize = True
         Me.lblNomeAluno.Location = New System.Drawing.Point(12, 41)
         Me.lblNomeAluno.Name = "lblNomeAluno"
         Me.lblNomeAluno.Size = New System.Drawing.Size(64, 13)
         Me.lblNomeAluno.TabIndex = 7
         Me.lblNomeAluno.Text = "NomeAluno"
-        '
-        'lblDataNascimento
-        '
         Me.lblDataNascimento.AutoSize = True
         Me.lblDataNascimento.Location = New System.Drawing.Point(12, 67)
         Me.lblDataNascimento.Name = "lblDataNascimento"
         Me.lblDataNascimento.Size = New System.Drawing.Size(91, 13)
         Me.lblDataNascimento.TabIndex = 8
         Me.lblDataNascimento.Text = "Data Nascimento"
-        '
-        'lblEmail
-        '
         Me.lblEmail.AutoSize = True
         Me.lblEmail.Location = New System.Drawing.Point(12, 93)
         Me.lblEmail.Name = "lblEmail"
         Me.lblEmail.Size = New System.Drawing.Size(32, 13)
         Me.lblEmail.TabIndex = 9
         Me.lblEmail.Text = "Email"
-        '
-        'lblTelefone
-        '
         Me.lblTelefone.AutoSize = True
         Me.lblTelefone.Location = New System.Drawing.Point(12, 119)
         Me.lblTelefone.Name = "lblTelefone"
         Me.lblTelefone.Size = New System.Drawing.Size(49, 13)
         Me.lblTelefone.TabIndex = 10
         Me.lblTelefone.Text = "Telefone"
-        '
-        'btnAdicionar
-        '
         Me.btnAdicionar.Location = New System.Drawing.Point(340, 38)
         Me.btnAdicionar.Name = "btnAdicionar"
         Me.btnAdicionar.Size = New System.Drawing.Size(75, 23)
         Me.btnAdicionar.TabIndex = 11
         Me.btnAdicionar.Text = "Adicionar"
         Me.btnAdicionar.UseVisualStyleBackColor = True
-        '
-        'btnAtualizar
-        '
         Me.btnAtualizar.Location = New System.Drawing.Point(340, 64)
         Me.btnAtualizar.Name = "btnAtualizar"
         Me.btnAtualizar.Size = New System.Drawing.Size(75, 23)
         Me.btnAtualizar.TabIndex = 12
         Me.btnAtualizar.Text = "Atualizar"
         Me.btnAtualizar.UseVisualStyleBackColor = True
-        '
-        'btnExcluir
-        '
         Me.btnExcluir.Location = New System.Drawing.Point(340, 90)
         Me.btnExcluir.Name = "btnExcluir"
         Me.btnExcluir.Size = New System.Drawing.Size(75, 23)
@@ -148,25 +108,18 @@ Partial Class AlunoForm
         Me.btnExcluir.Text = "Excluir"
         Me.btnExcluir.UseVisualStyleBackColor = True
 
-        'btnNovo
         Me.btnNovo.Location = New System.Drawing.Point(340, 116)
         Me.btnNovo.Name = "btnNovo"
         Me.btnNovo.Size = New System.Drawing.Size(75, 23)
         Me.btnNovo.TabIndex = 14
         Me.btnNovo.Text = "Novo"
         Me.btnNovo.UseVisualStyleBackColor = True
-        '
-        'btnVoltar
-        '
         Me.btnVoltar.Location = New System.Drawing.Point(12, 386)
         Me.btnVoltar.Name = "btnVoltar"
         Me.btnVoltar.Size = New System.Drawing.Size(75, 23)
         Me.btnVoltar.TabIndex = 15
         Me.btnVoltar.Text = "Voltar"
         Me.btnVoltar.UseVisualStyleBackColor = True
-        '
-        'AlunoForm
-        '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(584, 415)
