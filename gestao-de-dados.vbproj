@@ -80,6 +80,13 @@
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="AlunoForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AlunoForm.Designer.vb">
+      <DependentUpon>AlunoForm.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
