@@ -31,6 +31,7 @@ Public Class CursoForm
         txtArea.Clear()
         dtpDataInicio.Value = Date.Today
         dtpDataFim.Value = Date.Today
+        btnAdicionar.Enabled = False
         btnAtualizar.Enabled = False
         btnExcluir.Enabled = False
         dgvCursos.ClearSelection()
@@ -86,6 +87,7 @@ Public Class CursoForm
 
     Private Sub btnNovo_Click(sender As Object, e As EventArgs) Handles btnNovo.Click
         LimparCampos()
+        btnAdicionar.Enabled = True
     End Sub
 
     Private Sub dgvCursos_SelectionChanged(sender As Object, e As EventArgs) Handles dgvCursos.SelectionChanged
@@ -100,6 +102,7 @@ Public Class CursoForm
             dtpDataFim.Value = CDate(row.Cells("DataFim").Value)
             txtCargaHoraria.Text = row.Cells("CargaHoraria").Value.ToString()
             txtArea.Text = row.Cells("Area").Value.ToString()
+            btnAdicionar.Enabled = False
             btnAtualizar.Enabled = True
             btnExcluir.Enabled = True
         Else
