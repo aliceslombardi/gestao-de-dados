@@ -106,4 +106,8 @@ Public Class CursoForm
             LimparCampos()
         End If
     End Sub
+
+    Private Sub btnVoltar_Click(sender As Object, e As EventArgs) Handles btnVoltar.Click
+        Me.Close()
+    End Sub
 End Class
