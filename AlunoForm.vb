@@ -28,13 +28,16 @@ Public Class AlunoForm
         carregando = True
         Try
             Using conn As New SqlConnection(connectionString)
-                Dim adapter As New SqlDataAdapter("SELECT FormandoID, Nome, Email, Telefone, DataNascimento FROM Formandos", conn)
+                Dim adapter As New SqlDataAdapter("SELECT f.FormandoID, f.Nome, f.Email, f.Telefone, f.DataNascimento, f.CursoID, c.Nome AS Curso FROM Formandos f LEFT JOIN Cursos c ON f.CursoID = c.CursoID", conn)
                 Dim table As New DataTable()
                 adapter.Fill(table)
                 dgvAlunos.DataSource = table
             End Using
             If dgvAlunos.Columns.Contains("FormandoID") Then
                 dgvAlunos.Columns("FormandoID").Visible = False
+            End If
+            If dgvAlunos.Columns.Contains("CursoID") Then
+                dgvAlunos.Columns("CursoID").Visible = False
             End If
             dgvAlunos.ClearSelection()
         Catch ex As Exception
@@ -69,11 +72,16 @@ Public Class AlunoForm
 
         Try
             Using conn As New SqlConnection(connectionString)
-                Dim cmd As New SqlCommand("INSERT INTO Formandos (Nome, Email, Telefone, DataNascimento) VALUES (@Nome, @Email, @Telefone, @DataNascimento)", conn)
+                Dim cmd As New SqlCommand("INSERT INTO Formandos (Nome, Email, Telefone, DataNascimento, CursoID) VALUES (@Nome, @Email, @Telefone, @DataNascimento, @CursoID)", conn)
                 cmd.Parameters.AddWithValue("@Nome", txtNomeAluno.Text)
                 cmd.Parameters.AddWithValue("@Email", txtEmail.Text)
                 cmd.Parameters.AddWithValue("@Telefone", txtTelefone.Text)
                 cmd.Parameters.AddWithValue("@DataNascimento", dtpDataNascimento.Value.Date)
+                If cboCursos.SelectedIndex >= 0 Then
+                    cmd.Parameters.AddWithValue("@CursoID", CInt(cboCursos.SelectedValue))
+                Else
+                    cmd.Parameters.AddWithValue("@CursoID", DBNull.Value)
+                End If
                 conn.Open()
                 cmd.ExecuteNonQuery()
             End Using
@@ -93,11 +101,16 @@ Public Class AlunoForm
         Try
             Dim id As Integer = CInt(dgvAlunos.SelectedRows(0).Cells("FormandoID").Value)
             Using conn As New SqlConnection(connectionString)
-                Dim cmd As New SqlCommand("UPDATE Formandos SET Nome=@Nome, Email=@Email, Telefone=@Telefone, DataNascimento=@DataNascimento WHERE FormandoID=@ID", conn)
+                Dim cmd As New SqlCommand("UPDATE Formandos SET Nome=@Nome, Email=@Email, Telefone=@Telefone, DataNascimento=@DataNascimento, CursoID=@CursoID WHERE FormandoID=@ID", conn)
                 cmd.Parameters.AddWithValue("@Nome", txtNomeAluno.Text)
                 cmd.Parameters.AddWithValue("@Email", txtEmail.Text)
                 cmd.Parameters.AddWithValue("@Telefone", txtTelefone.Text)
                 cmd.Parameters.AddWithValue("@DataNascimento", dtpDataNascimento.Value.Date)
+                If cboCursos.SelectedIndex >= 0 Then
+                    cmd.Parameters.AddWithValue("@CursoID", CInt(cboCursos.SelectedValue))
+                Else
+                    cmd.Parameters.AddWithValue("@CursoID", DBNull.Value)
+                End If
                 cmd.Parameters.AddWithValue("@ID", id)
                 conn.Open()
                 cmd.ExecuteNonQuery()
@@ -146,6 +159,11 @@ Public Class AlunoForm
             dtpDataNascimento.Value = CDate(row.Cells("DataNascimento").Value)
             txtEmail.Text = row.Cells("Email").Value.ToString()
             txtTelefone.Text = row.Cells("Telefone").Value.ToString()
+            If row.Cells.Contains("CursoID") AndAlso Not IsDBNull(row.Cells("CursoID").Value) Then
+                cboCursos.SelectedValue = CInt(row.Cells("CursoID").Value)
+            Else
+                cboCursos.SelectedIndex = -1
+            End If
             btnAdicionar.Enabled = False
             btnAtualizar.Enabled = True
             btnExcluir.Enabled = True
