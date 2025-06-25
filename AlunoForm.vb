@@ -28,7 +28,10 @@ Public Class AlunoForm
         carregando = True
         Try
             Using conn As New SqlConnection(connectionString)
-                Dim adapter As New SqlDataAdapter("SELECT f.FormandoID, f.Nome, f.Email, f.Telefone, f.DataNascimento, f.CursoID, c.Nome AS Curso FROM Formandos f LEFT JOIN Cursos c ON f.CursoID = c.CursoID", conn)
+                Dim adapter As New SqlDataAdapter("SELECT f.FormandoID, f.Nome, f.Email, f.Telefone, f.DataNascimento, i.CursoID, c.Nome AS Curso " & _
+                                                "FROM Formandos f " & _
+                                                "LEFT JOIN Inscricoes i ON f.FormandoID = i.FormandoID " & _
+                                                "LEFT JOIN Cursos c ON i.CursoID = c.CursoID", conn)
                 Dim table As New DataTable()
                 adapter.Fill(table)
                 dgvAlunos.DataSource = table
@@ -72,18 +75,20 @@ Public Class AlunoForm
 
         Try
             Using conn As New SqlConnection(connectionString)
-                Dim cmd As New SqlCommand("INSERT INTO Formandos (Nome, Email, Telefone, DataNascimento, CursoID) VALUES (@Nome, @Email, @Telefone, @DataNascimento, @CursoID)", conn)
+                Dim cmd As New SqlCommand("INSERT INTO Formandos (Nome, Email, Telefone, DataNascimento) OUTPUT INSERTED.FormandoID VALUES (@Nome, @Email, @Telefone, @DataNascimento)", conn)
                 cmd.Parameters.AddWithValue("@Nome", txtNomeAluno.Text)
                 cmd.Parameters.AddWithValue("@Email", txtEmail.Text)
                 cmd.Parameters.AddWithValue("@Telefone", txtTelefone.Text)
                 cmd.Parameters.AddWithValue("@DataNascimento", dtpDataNascimento.Value.Date)
-                If cboCursos.SelectedIndex >= 0 Then
-                    cmd.Parameters.AddWithValue("@CursoID", CInt(cboCursos.SelectedValue))
-                Else
-                    cmd.Parameters.AddWithValue("@CursoID", DBNull.Value)
-                End If
                 conn.Open()
-                cmd.ExecuteNonQuery()
+                Dim formandoId As Integer = CInt(cmd.ExecuteScalar())
+
+                If cboCursos.SelectedIndex >= 0 Then
+                    Dim cmdIns As New SqlCommand("INSERT INTO Inscricoes (FormandoID, CursoID) VALUES (@FormandoID, @CursoID)", conn)
+                    cmdIns.Parameters.AddWithValue("@FormandoID", formandoId)
+                    cmdIns.Parameters.AddWithValue("@CursoID", CInt(cboCursos.SelectedValue))
+                    cmdIns.ExecuteNonQuery()
+                End If
             End Using
             CarregarAlunos()
             LimparCampos()
@@ -101,19 +106,27 @@ Public Class AlunoForm
         Try
             Dim id As Integer = CInt(dgvAlunos.SelectedRows(0).Cells("FormandoID").Value)
             Using conn As New SqlConnection(connectionString)
-                Dim cmd As New SqlCommand("UPDATE Formandos SET Nome=@Nome, Email=@Email, Telefone=@Telefone, DataNascimento=@DataNascimento, CursoID=@CursoID WHERE FormandoID=@ID", conn)
+                Dim cmd As New SqlCommand("UPDATE Formandos SET Nome=@Nome, Email=@Email, Telefone=@Telefone, DataNascimento=@DataNascimento WHERE FormandoID=@ID", conn)
                 cmd.Parameters.AddWithValue("@Nome", txtNomeAluno.Text)
                 cmd.Parameters.AddWithValue("@Email", txtEmail.Text)
                 cmd.Parameters.AddWithValue("@Telefone", txtTelefone.Text)
                 cmd.Parameters.AddWithValue("@DataNascimento", dtpDataNascimento.Value.Date)
-                If cboCursos.SelectedIndex >= 0 Then
-                    cmd.Parameters.AddWithValue("@CursoID", CInt(cboCursos.SelectedValue))
-                Else
-                    cmd.Parameters.AddWithValue("@CursoID", DBNull.Value)
-                End If
                 cmd.Parameters.AddWithValue("@ID", id)
                 conn.Open()
                 cmd.ExecuteNonQuery()
+
+                If cboCursos.SelectedIndex >= 0 Then
+                    Dim cmdIns As New SqlCommand("IF EXISTS (SELECT 1 FROM Inscricoes WHERE FormandoID=@ID) " & _
+                                                "UPDATE Inscricoes SET CursoID=@CursoID WHERE FormandoID=@ID " & _
+                                                "ELSE INSERT INTO Inscricoes (FormandoID, CursoID) VALUES (@ID, @CursoID)", conn)
+                    cmdIns.Parameters.AddWithValue("@ID", id)
+                    cmdIns.Parameters.AddWithValue("@CursoID", CInt(cboCursos.SelectedValue))
+                    cmdIns.ExecuteNonQuery()
+                Else
+                    Dim cmdDel As New SqlCommand("DELETE FROM Inscricoes WHERE FormandoID=@ID", conn)
+                    cmdDel.Parameters.AddWithValue("@ID", id)
+                    cmdDel.ExecuteNonQuery()
+                End If
             End Using
             CarregarAlunos()
             LimparCampos()
@@ -131,9 +144,12 @@ Public Class AlunoForm
         Try
             Dim id As Integer = CInt(dgvAlunos.SelectedRows(0).Cells("FormandoID").Value)
             Using conn As New SqlConnection(connectionString)
+                Dim cmdDelIns As New SqlCommand("DELETE FROM Inscricoes WHERE FormandoID=@ID", conn)
+                cmdDelIns.Parameters.AddWithValue("@ID", id)
                 Dim cmd As New SqlCommand("DELETE FROM Formandos WHERE FormandoID=@ID", conn)
                 cmd.Parameters.AddWithValue("@ID", id)
                 conn.Open()
+                cmdDelIns.ExecuteNonQuery()
                 cmd.ExecuteNonQuery()
             End Using
             CarregarAlunos()
