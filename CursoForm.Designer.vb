@@ -9,15 +9,18 @@ Partial Class CursoForm
         Me.dgvCursos = New System.Windows.Forms.DataGridView()
         Me.txtNome = New System.Windows.Forms.TextBox()
         Me.dtpDataInicio = New System.Windows.Forms.DateTimePicker()
+        Me.dtpDataFim = New System.Windows.Forms.DateTimePicker()
         Me.txtCargaHoraria = New System.Windows.Forms.TextBox()
         Me.txtArea = New System.Windows.Forms.TextBox()
         Me.lblNome = New System.Windows.Forms.Label()
         Me.lblDataInicio = New System.Windows.Forms.Label()
+        Me.lblDataFim = New System.Windows.Forms.Label()
         Me.lblCargaHoraria = New System.Windows.Forms.Label()
         Me.lblArea = New System.Windows.Forms.Label()
         Me.btnAdicionar = New System.Windows.Forms.Button()
         Me.btnAtualizar = New System.Windows.Forms.Button()
         Me.btnExcluir = New System.Windows.Forms.Button()
+        Me.btnNovo = New System.Windows.Forms.Button()
         CType(Me.dgvCursos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -140,12 +143,21 @@ Partial Class CursoForm
         Me.btnExcluir.TabIndex = 14
         Me.btnExcluir.Text = "Excluir"
         Me.btnExcluir.UseVisualStyleBackColor = True
+
+        'btnNovo
+        Me.btnNovo.Location = New System.Drawing.Point(340, 116)
+        Me.btnNovo.Name = "btnNovo"
+        Me.btnNovo.Size = New System.Drawing.Size(75, 23)
+        Me.btnNovo.TabIndex = 15
+        Me.btnNovo.Text = "Novo"
+        Me.btnNovo.UseVisualStyleBackColor = True
         '
         'CursoForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(584, 379)
+        Me.Controls.Add(Me.btnNovo)
         Me.Controls.Add(Me.btnExcluir)
         Me.Controls.Add(Me.btnAtualizar)
         Me.Controls.Add(Me.btnAdicionar)
@@ -182,4 +194,5 @@ Partial Class CursoForm
     Friend WithEvents btnAdicionar As Button
     Friend WithEvents btnAtualizar As Button
     Friend WithEvents btnExcluir As Button
+    Friend WithEvents btnNovo As Button
 End Class
