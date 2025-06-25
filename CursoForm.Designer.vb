@@ -17,6 +17,7 @@ Partial Class CursoForm
         Me.lblDataFim = New System.Windows.Forms.Label()
         Me.lblCargaHoraria = New System.Windows.Forms.Label()
         Me.lblArea = New System.Windows.Forms.Label()
+        Me.btnVoltar = New System.Windows.Forms.Button()
         Me.btnAdicionar = New System.Windows.Forms.Button()
         Me.btnAtualizar = New System.Windows.Forms.Button()
         Me.btnExcluir = New System.Windows.Forms.Button()

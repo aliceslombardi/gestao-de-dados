@@ -15,6 +15,7 @@ Partial Class AlunoForm
         Me.lblDataNascimento = New System.Windows.Forms.Label()
         Me.lblEmail = New System.Windows.Forms.Label()
         Me.lblTelefone = New System.Windows.Forms.Label()
+        Me.btnVoltar = New System.Windows.Forms.Button()
         Me.btnAdicionar = New System.Windows.Forms.Button()
         Me.btnAtualizar = New System.Windows.Forms.Button()
         Me.btnExcluir = New System.Windows.Forms.Button()
