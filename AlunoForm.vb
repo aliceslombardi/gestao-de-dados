@@ -18,6 +18,10 @@ Public Class AlunoForm
         txtEmail.Clear()
         txtTelefone.Clear()
         cboCursos.SelectedIndex = -1
+        btnAdicionar.Enabled = False
+        btnAtualizar.Enabled = False
+        btnExcluir.Enabled = False
+        dgvAlunos.ClearSelection()
     End Sub
 
     Private Sub CarregarAlunos()
@@ -126,6 +130,11 @@ Public Class AlunoForm
         End Try
     End Sub
 
+    Private Sub btnNovo_Click(sender As Object, e As EventArgs) Handles btnNovo.Click
+        LimparCampos()
+        btnAdicionar.Enabled = True
+    End Sub
+
     Private Sub dgvAlunos_SelectionChanged(sender As Object, e As EventArgs) Handles dgvAlunos.SelectionChanged
         If carregando Then
             Return
@@ -137,6 +146,9 @@ Public Class AlunoForm
             dtpDataNascimento.Value = CDate(row.Cells("DataNascimento").Value)
             txtEmail.Text = row.Cells("Email").Value.ToString()
             txtTelefone.Text = row.Cells("Telefone").Value.ToString()
+            btnAdicionar.Enabled = False
+            btnAtualizar.Enabled = True
+            btnExcluir.Enabled = True
         Else
             LimparCampos()
         End If
