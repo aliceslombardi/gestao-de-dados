@@ -3,6 +3,7 @@ Imports System.Data.SqlClient
 
 Public Class AlunoForm
     Private connectionString As String = ConfigurationManager.ConnectionStrings("FormacaoDB").ConnectionString
+    Private carregando As Boolean = False
 
     Private Sub AlunoForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CarregarAlunos()
@@ -17,6 +18,7 @@ Public Class AlunoForm
     End Sub
 
     Private Sub CarregarAlunos()
+        carregando = True
         Try
             Using conn As New SqlConnection(connectionString)
                 Dim adapter As New SqlDataAdapter("SELECT FormandoID, Nome, Email, Telefone, DataNascimento FROM Formandos", conn)
@@ -30,6 +32,8 @@ Public Class AlunoForm
             dgvAlunos.ClearSelection()
         Catch ex As Exception
             MessageBox.Show($"Erro ao carregar alunos: {ex.Message}")
+        Finally
+            carregando = False
         End Try
     End Sub
 
@@ -103,6 +107,10 @@ Public Class AlunoForm
     End Sub
 
     Private Sub dgvAlunos_SelectionChanged(sender As Object, e As EventArgs) Handles dgvAlunos.SelectionChanged
+        If carregando Then
+            Return
+        End If
+
         If dgvAlunos.SelectedRows.Count > 0 Then
             Dim row = dgvAlunos.SelectedRows(0)
             txtNomeAluno.Text = row.Cells("Nome").Value.ToString()
