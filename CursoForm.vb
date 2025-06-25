@@ -3,12 +3,15 @@ Imports System.Data.SqlClient
 
 Public Class CursoForm
     Private connectionString As String = ConfigurationManager.ConnectionStrings("FormacaoDB").ConnectionString
+    Private carregando As Boolean = False
 
     Private Sub CursoForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CarregarCursos()
+        LimparCampos()
     End Sub
 
     Private Sub CarregarCursos()
+        carregando = True
         Using conn As New SqlConnection(connectionString)
             Dim adapter As New SqlDataAdapter("SELECT CursoID, Nome, CargaHoraria, Area, DataInicio, DataFim FROM Cursos", conn)
             Dim table As New DataTable()
@@ -18,6 +21,19 @@ Public Class CursoForm
         If dgvCursos.Columns.Contains("CursoID") Then
             dgvCursos.Columns("CursoID").Visible = False
         End If
+        dgvCursos.ClearSelection()
+        carregando = False
+    End Sub
+
+    Private Sub LimparCampos()
+        txtNome.Clear()
+        txtCargaHoraria.Clear()
+        txtArea.Clear()
+        dtpDataInicio.Value = Date.Today
+        dtpDataFim.Value = Date.Today
+        btnAtualizar.Enabled = False
+        btnExcluir.Enabled = False
+        dgvCursos.ClearSelection()
     End Sub
 
     Private Sub btnAdicionar_Click(sender As Object, e As EventArgs) Handles btnAdicionar.Click
@@ -32,6 +48,7 @@ Public Class CursoForm
             cmd.ExecuteNonQuery()
         End Using
         CarregarCursos()
+        LimparCampos()
     End Sub
 
     Private Sub btnAtualizar_Click(sender As Object, e As EventArgs) Handles btnAtualizar.Click
@@ -49,6 +66,7 @@ Public Class CursoForm
                 cmd.ExecuteNonQuery()
             End Using
             CarregarCursos()
+            LimparCampos()
         End If
     End Sub
 
@@ -62,10 +80,19 @@ Public Class CursoForm
                 cmd.ExecuteNonQuery()
             End Using
             CarregarCursos()
+            LimparCampos()
         End If
     End Sub
 
+    Private Sub btnNovo_Click(sender As Object, e As EventArgs) Handles btnNovo.Click
+        LimparCampos()
+    End Sub
+
     Private Sub dgvCursos_SelectionChanged(sender As Object, e As EventArgs) Handles dgvCursos.SelectionChanged
+        If carregando Then
+            Return
+        End If
+
         If dgvCursos.SelectedRows.Count > 0 Then
             Dim row = dgvCursos.SelectedRows(0)
             txtNome.Text = row.Cells("Nome").Value.ToString()
@@ -73,6 +100,10 @@ Public Class CursoForm
             dtpDataFim.Value = CDate(row.Cells("DataFim").Value)
             txtCargaHoraria.Text = row.Cells("CargaHoraria").Value.ToString()
             txtArea.Text = row.Cells("Area").Value.ToString()
+            btnAtualizar.Enabled = True
+            btnExcluir.Enabled = True
+        Else
+            LimparCampos()
         End If
     End Sub
 End Class
