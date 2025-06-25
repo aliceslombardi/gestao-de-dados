@@ -10,11 +10,9 @@ Partial Class AlunoForm
         Me.txtNomeAluno = New System.Windows.Forms.TextBox()
         Me.dtpDataNascimento = New System.Windows.Forms.DateTimePicker()
         Me.txtEmail = New System.Windows.Forms.TextBox()
-        Me.txtIDCurso = New System.Windows.Forms.TextBox()
         Me.lblNomeAluno = New System.Windows.Forms.Label()
         Me.lblDataNascimento = New System.Windows.Forms.Label()
         Me.lblEmail = New System.Windows.Forms.Label()
-        Me.lblIDCurso = New System.Windows.Forms.Label()
         Me.btnAdicionar = New System.Windows.Forms.Button()
         Me.btnAtualizar = New System.Windows.Forms.Button()
         Me.btnExcluir = New System.Windows.Forms.Button()
@@ -26,7 +24,7 @@ Partial Class AlunoForm
         Me.dgvAlunos.AllowUserToAddRows = False
         Me.dgvAlunos.AllowUserToDeleteRows = False
         Me.dgvAlunos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvAlunos.Location = New System.Drawing.Point(12, 141)
+        Me.dgvAlunos.Location = New System.Drawing.Point(12, 120)
         Me.dgvAlunos.MultiSelect = False
         Me.dgvAlunos.Name = "dgvAlunos"
         Me.dgvAlunos.ReadOnly = True
@@ -56,14 +54,6 @@ Partial Class AlunoForm
         Me.txtEmail.Size = New System.Drawing.Size(200, 20)
         Me.txtEmail.TabIndex = 4
         '
-        'txtIDCurso
-        '
-        Me.txtIDCurso.Location = New System.Drawing.Point(118, 116)
-        Me.txtIDCurso.Name = "txtIDCurso"
-        Me.txtIDCurso.Size = New System.Drawing.Size(100, 20)
-        Me.txtIDCurso.TabIndex = 5
-        '
-        '
         'lblNomeAluno
         '
         Me.lblNomeAluno.AutoSize = True
@@ -91,18 +81,9 @@ Partial Class AlunoForm
         Me.lblEmail.TabIndex = 9
         Me.lblEmail.Text = "Email"
         '
-        'lblIDCurso
-        '
-        Me.lblIDCurso.AutoSize = True
-        Me.lblIDCurso.Location = New System.Drawing.Point(12, 119)
-        Me.lblIDCurso.Name = "lblIDCurso"
-        Me.lblIDCurso.Size = New System.Drawing.Size(45, 13)
-        Me.lblIDCurso.TabIndex = 10
-        Me.lblIDCurso.Text = "IDCurso"
-        '
         'btnAdicionar
         '
-        Me.btnAdicionar.Location = New System.Drawing.Point(340, 10)
+        Me.btnAdicionar.Location = New System.Drawing.Point(340, 38)
         Me.btnAdicionar.Name = "btnAdicionar"
         Me.btnAdicionar.Size = New System.Drawing.Size(75, 23)
         Me.btnAdicionar.TabIndex = 11
@@ -111,7 +92,7 @@ Partial Class AlunoForm
         '
         'btnAtualizar
         '
-        Me.btnAtualizar.Location = New System.Drawing.Point(340, 39)
+        Me.btnAtualizar.Location = New System.Drawing.Point(340, 64)
         Me.btnAtualizar.Name = "btnAtualizar"
         Me.btnAtualizar.Size = New System.Drawing.Size(75, 23)
         Me.btnAtualizar.TabIndex = 12
@@ -120,7 +101,7 @@ Partial Class AlunoForm
         '
         'btnExcluir
         '
-        Me.btnExcluir.Location = New System.Drawing.Point(340, 68)
+        Me.btnExcluir.Location = New System.Drawing.Point(340, 90)
         Me.btnExcluir.Name = "btnExcluir"
         Me.btnExcluir.Size = New System.Drawing.Size(75, 23)
         Me.btnExcluir.TabIndex = 13
@@ -135,11 +116,9 @@ Partial Class AlunoForm
         Me.Controls.Add(Me.btnExcluir)
         Me.Controls.Add(Me.btnAtualizar)
         Me.Controls.Add(Me.btnAdicionar)
-        Me.Controls.Add(Me.lblIDCurso)
         Me.Controls.Add(Me.lblEmail)
         Me.Controls.Add(Me.lblDataNascimento)
         Me.Controls.Add(Me.lblNomeAluno)
-        Me.Controls.Add(Me.txtIDCurso)
         Me.Controls.Add(Me.txtEmail)
         Me.Controls.Add(Me.dtpDataNascimento)
         Me.Controls.Add(Me.txtNomeAluno)
@@ -156,11 +135,9 @@ Partial Class AlunoForm
     Friend WithEvents txtNomeAluno As TextBox
     Friend WithEvents dtpDataNascimento As DateTimePicker
     Friend WithEvents txtEmail As TextBox
-    Friend WithEvents txtIDCurso As TextBox
     Friend WithEvents lblNomeAluno As Label
     Friend WithEvents lblDataNascimento As Label
     Friend WithEvents lblEmail As Label
-    Friend WithEvents lblIDCurso As Label
     Friend WithEvents btnAdicionar As Button
     Friend WithEvents btnAtualizar As Button
     Friend WithEvents btnExcluir As Button

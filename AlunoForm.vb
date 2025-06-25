@@ -9,11 +9,13 @@ Public Class AlunoForm
             .Add("NomeAluno", GetType(String))
             .Add("DataNascimento", GetType(Date))
             .Add("Email", GetType(String))
-            .Add("IDCurso", GetType(Integer))
+            Dim colCurso = .Add("IDCurso", GetType(Integer))
+            colCurso.DefaultValue = 0
         End With
 
         dgvAlunos.DataSource = alunosTable
         dgvAlunos.Columns("IDFormando").Visible = False
+        dgvAlunos.Columns("IDCurso").Visible = False
     End Sub
 
     Private Sub btnAdicionar_Click(sender As Object, e As EventArgs) Handles btnAdicionar.Click
@@ -22,7 +24,7 @@ Public Class AlunoForm
             txtNomeAluno.Text,
             dtpDataNascimento.Value,
             txtEmail.Text,
-            CInt(txtIDCurso.Text))
+            0)
         nextId += 1
     End Sub
 
@@ -32,7 +34,6 @@ Public Class AlunoForm
             row.Cells("NomeAluno").Value = txtNomeAluno.Text
             row.Cells("DataNascimento").Value = dtpDataNascimento.Value
             row.Cells("Email").Value = txtEmail.Text
-            row.Cells("IDCurso").Value = CInt(txtIDCurso.Text)
         End If
     End Sub
 
@@ -48,7 +49,6 @@ Public Class AlunoForm
             txtNomeAluno.Text = row.Cells("NomeAluno").Value.ToString()
             dtpDataNascimento.Value = CDate(row.Cells("DataNascimento").Value)
             txtEmail.Text = row.Cells("Email").Value.ToString()
-            txtIDCurso.Text = row.Cells("IDCurso").Value.ToString()
         End If
     End Sub
 End Class
