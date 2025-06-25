@@ -2,30 +2,30 @@ Imports System.Configuration
 Imports System.Data.SqlClient
 
 Public Class CursoForm
-    Private connectionString As String = ConfigurationManager.ConnectionStrings("FormacaoDB").ConnectionString
-    Private carregando As Boolean = False
+    Private cs As String = ConfigurationManager.ConnectionStrings("FormacaoDB").ConnectionString
+    Private car As Boolean = False
 
     Private Sub CursoForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        CarregarCursos()
-        LimparCampos()
+        LoadCs()
+        Clean()
     End Sub
 
-    Private Sub CarregarCursos()
-        carregando = True
-        Using conn As New SqlConnection(connectionString)
-            Dim adapter As New SqlDataAdapter("SELECT CursoID, Nome, CargaHoraria, Area, DataInicio, DataFim FROM Cursos", conn)
-            Dim table As New DataTable()
-            adapter.Fill(table)
-            dgvCursos.DataSource = table
+    Private Sub LoadCs()
+        car = True
+        Using c As New SqlConnection(cs)
+            Dim da As New SqlDataAdapter("SELECT CursoID, Nome, CargaHoraria, Area, DataInicio, DataFim FROM Cursos", c)
+            Dim t As New DataTable()
+            da.Fill(t)
+            dgvCursos.DataSource = t
         End Using
         If dgvCursos.Columns.Contains("CursoID") Then
             dgvCursos.Columns("CursoID").Visible = False
         End If
         dgvCursos.ClearSelection()
-        carregando = False
+        car = False
     End Sub
 
-    Private Sub LimparCampos()
+    Private Sub Clean()
         txtNome.Clear()
         txtCargaHoraria.Clear()
         txtArea.Clear()
@@ -38,60 +38,60 @@ Public Class CursoForm
     End Sub
 
     Private Sub btnAdicionar_Click(sender As Object, e As EventArgs) Handles btnAdicionar.Click
-        Using conn As New SqlConnection(connectionString)
-            Dim cmd As New SqlCommand("INSERT INTO Cursos (Nome, CargaHoraria, Area, DataInicio, DataFim) VALUES (@Nome, @CargaHoraria, @Area, @DataInicio, @DataFim)", conn)
+        Using c As New SqlConnection(cs)
+            Dim cmd As New SqlCommand("INSERT INTO Cursos (Nome, CargaHoraria, Area, DataInicio, DataFim) VALUES (@Nome, @CargaHoraria, @Area, @DataInicio, @DataFim)", c)
             cmd.Parameters.AddWithValue("@Nome", txtNome.Text)
             cmd.Parameters.AddWithValue("@CargaHoraria", txtCargaHoraria.Text)
             cmd.Parameters.AddWithValue("@Area", txtArea.Text)
             cmd.Parameters.AddWithValue("@DataInicio", dtpDataInicio.Value.Date)
             cmd.Parameters.AddWithValue("@DataFim", dtpDataFim.Value.Date)
-            conn.Open()
+            c.Open()
             cmd.ExecuteNonQuery()
         End Using
-        CarregarCursos()
-        LimparCampos()
+        LoadCs()
+        Clean()
     End Sub
 
     Private Sub btnAtualizar_Click(sender As Object, e As EventArgs) Handles btnAtualizar.Click
         If dgvCursos.SelectedRows.Count > 0 Then
             Dim id As Integer = CInt(dgvCursos.SelectedRows(0).Cells("CursoID").Value)
-            Using conn As New SqlConnection(connectionString)
-                Dim cmd As New SqlCommand("UPDATE Cursos SET Nome=@Nome, CargaHoraria=@CargaHoraria, Area=@Area, DataInicio=@DataInicio, DataFim=@DataFim WHERE CursoID=@ID", conn)
+            Using c As New SqlConnection(cs)
+                Dim cmd As New SqlCommand("UPDATE Cursos SET Nome=@Nome, CargaHoraria=@CargaHoraria, Area=@Area, DataInicio=@DataInicio, DataFim=@DataFim WHERE CursoID=@ID", c)
                 cmd.Parameters.AddWithValue("@Nome", txtNome.Text)
                 cmd.Parameters.AddWithValue("@CargaHoraria", txtCargaHoraria.Text)
                 cmd.Parameters.AddWithValue("@Area", txtArea.Text)
                 cmd.Parameters.AddWithValue("@DataInicio", dtpDataInicio.Value.Date)
                 cmd.Parameters.AddWithValue("@DataFim", dtpDataFim.Value.Date)
                 cmd.Parameters.AddWithValue("@ID", id)
-                conn.Open()
+                c.Open()
                 cmd.ExecuteNonQuery()
             End Using
-            CarregarCursos()
-            LimparCampos()
+            LoadCs()
+            Clean()
         End If
     End Sub
 
     Private Sub btnExcluir_Click(sender As Object, e As EventArgs) Handles btnExcluir.Click
         If dgvCursos.SelectedRows.Count > 0 Then
             Dim id As Integer = CInt(dgvCursos.SelectedRows(0).Cells("CursoID").Value)
-            Using conn As New SqlConnection(connectionString)
-                Dim cmd As New SqlCommand("DELETE FROM Cursos WHERE CursoID=@ID", conn)
+            Using c As New SqlConnection(cs)
+                Dim cmd As New SqlCommand("DELETE FROM Cursos WHERE CursoID=@ID", c)
                 cmd.Parameters.AddWithValue("@ID", id)
-                conn.Open()
+                c.Open()
                 cmd.ExecuteNonQuery()
             End Using
-            CarregarCursos()
-            LimparCampos()
+            LoadCs()
+            Clean()
         End If
     End Sub
 
     Private Sub btnNovo_Click(sender As Object, e As EventArgs) Handles btnNovo.Click
-        LimparCampos()
+        Clean()
         btnAdicionar.Enabled = True
     End Sub
 
     Private Sub dgvCursos_SelectionChanged(sender As Object, e As EventArgs) Handles dgvCursos.SelectionChanged
-        If carregando Then
+        If car Then
             Return
         End If
 
@@ -106,7 +106,7 @@ Public Class CursoForm
             btnAtualizar.Enabled = True
             btnExcluir.Enabled = True
         Else
-            LimparCampos()
+            Clean()
         End If
     End Sub
 
