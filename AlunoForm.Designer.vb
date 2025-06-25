@@ -10,9 +10,11 @@ Partial Class AlunoForm
         Me.txtNomeAluno = New System.Windows.Forms.TextBox()
         Me.dtpDataNascimento = New System.Windows.Forms.DateTimePicker()
         Me.txtEmail = New System.Windows.Forms.TextBox()
+        Me.txtTelefone = New System.Windows.Forms.TextBox()
         Me.lblNomeAluno = New System.Windows.Forms.Label()
         Me.lblDataNascimento = New System.Windows.Forms.Label()
         Me.lblEmail = New System.Windows.Forms.Label()
+        Me.lblTelefone = New System.Windows.Forms.Label()
         Me.btnAdicionar = New System.Windows.Forms.Button()
         Me.btnAtualizar = New System.Windows.Forms.Button()
         Me.btnExcluir = New System.Windows.Forms.Button()
@@ -24,7 +26,7 @@ Partial Class AlunoForm
         Me.dgvAlunos.AllowUserToAddRows = False
         Me.dgvAlunos.AllowUserToDeleteRows = False
         Me.dgvAlunos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvAlunos.Location = New System.Drawing.Point(12, 120)
+        Me.dgvAlunos.Location = New System.Drawing.Point(12, 150)
         Me.dgvAlunos.MultiSelect = False
         Me.dgvAlunos.Name = "dgvAlunos"
         Me.dgvAlunos.ReadOnly = True
@@ -54,6 +56,13 @@ Partial Class AlunoForm
         Me.txtEmail.Size = New System.Drawing.Size(200, 20)
         Me.txtEmail.TabIndex = 4
         '
+        'txtTelefone
+        '
+        Me.txtTelefone.Location = New System.Drawing.Point(118, 116)
+        Me.txtTelefone.Name = "txtTelefone"
+        Me.txtTelefone.Size = New System.Drawing.Size(200, 20)
+        Me.txtTelefone.TabIndex = 5
+        '
         'lblNomeAluno
         '
         Me.lblNomeAluno.AutoSize = True
@@ -80,6 +89,15 @@ Partial Class AlunoForm
         Me.lblEmail.Size = New System.Drawing.Size(32, 13)
         Me.lblEmail.TabIndex = 9
         Me.lblEmail.Text = "Email"
+        '
+        'lblTelefone
+        '
+        Me.lblTelefone.AutoSize = True
+        Me.lblTelefone.Location = New System.Drawing.Point(12, 119)
+        Me.lblTelefone.Name = "lblTelefone"
+        Me.lblTelefone.Size = New System.Drawing.Size(49, 13)
+        Me.lblTelefone.TabIndex = 10
+        Me.lblTelefone.Text = "Telefone"
         '
         'btnAdicionar
         '
@@ -117,9 +135,11 @@ Partial Class AlunoForm
         Me.Controls.Add(Me.btnAtualizar)
         Me.Controls.Add(Me.btnAdicionar)
         Me.Controls.Add(Me.lblEmail)
+        Me.Controls.Add(Me.lblTelefone)
         Me.Controls.Add(Me.lblDataNascimento)
         Me.Controls.Add(Me.lblNomeAluno)
         Me.Controls.Add(Me.txtEmail)
+        Me.Controls.Add(Me.txtTelefone)
         Me.Controls.Add(Me.dtpDataNascimento)
         Me.Controls.Add(Me.txtNomeAluno)
         Me.Controls.Add(Me.dgvAlunos)
@@ -135,9 +155,11 @@ Partial Class AlunoForm
     Friend WithEvents txtNomeAluno As TextBox
     Friend WithEvents dtpDataNascimento As DateTimePicker
     Friend WithEvents txtEmail As TextBox
+    Friend WithEvents txtTelefone As TextBox
     Friend WithEvents lblNomeAluno As Label
     Friend WithEvents lblDataNascimento As Label
     Friend WithEvents lblEmail As Label
+    Friend WithEvents lblTelefone As Label
     Friend WithEvents btnAdicionar As Button
     Friend WithEvents btnAtualizar As Button
     Friend WithEvents btnExcluir As Button
