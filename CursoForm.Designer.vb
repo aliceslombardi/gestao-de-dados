@@ -18,6 +18,7 @@ Partial Class CursoForm
         Me.btnAdicionar = New System.Windows.Forms.Button()
         Me.btnAtualizar = New System.Windows.Forms.Button()
         Me.btnExcluir = New System.Windows.Forms.Button()
+        Me.btnNovo = New System.Windows.Forms.Button()
         CType(Me.dgvCursos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -140,12 +141,21 @@ Partial Class CursoForm
         Me.btnExcluir.TabIndex = 14
         Me.btnExcluir.Text = "Excluir"
         Me.btnExcluir.UseVisualStyleBackColor = True
+
+        'btnNovo
+        Me.btnNovo.Location = New System.Drawing.Point(340, 116)
+        Me.btnNovo.Name = "btnNovo"
+        Me.btnNovo.Size = New System.Drawing.Size(75, 23)
+        Me.btnNovo.TabIndex = 15
+        Me.btnNovo.Text = "Novo"
+        Me.btnNovo.UseVisualStyleBackColor = True
         '
         'CursoForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(584, 379)
+        Me.Controls.Add(Me.btnNovo)
         Me.Controls.Add(Me.btnExcluir)
         Me.Controls.Add(Me.btnAtualizar)
         Me.Controls.Add(Me.btnAdicionar)
@@ -182,4 +192,5 @@ Partial Class CursoForm
     Friend WithEvents btnAdicionar As Button
     Friend WithEvents btnAtualizar As Button
     Friend WithEvents btnExcluir As Button
+    Friend WithEvents btnNovo As Button
 End Class
