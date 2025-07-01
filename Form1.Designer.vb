@@ -28,70 +28,108 @@ Partial Class Form1
         Me.lblPalmira = New System.Windows.Forms.Label()
         Me.lblTurma = New System.Windows.Forms.Label()
         Me.SuspendLayout()
-        Me.lblTitulo.AutoSize = False
+        '
+        'lblTitulo
+        '
         Me.lblTitulo.Dock = System.Windows.Forms.DockStyle.Top
-        Me.lblTitulo.Font = New System.Drawing.Font("Segoe UI", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.lblTitulo.Font = New System.Drawing.Font("Segoe UI", 14.0!, System.Drawing.FontStyle.Bold)
         Me.lblTitulo.Location = New System.Drawing.Point(0, 0)
+        Me.lblTitulo.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTitulo.Name = "lblTitulo"
-        Me.lblTitulo.Padding = New System.Windows.Forms.Padding(0, 10, 0, 10)
-        Me.lblTitulo.Size = New System.Drawing.Size(250, 45)
+        Me.lblTitulo.Padding = New System.Windows.Forms.Padding(0, 12, 0, 12)
+        Me.lblTitulo.Size = New System.Drawing.Size(618, 55)
         Me.lblTitulo.TabIndex = 0
         Me.lblTitulo.Text = "Gestão de Dados"
         Me.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btnAlunos.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.btnAlunos.Location = New System.Drawing.Point(45, 60)
+        '
+        'btnAlunos
+        '
+        Me.btnAlunos.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.btnAlunos.Location = New System.Drawing.Point(181, 120)
+        Me.btnAlunos.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnAlunos.Name = "btnAlunos"
-        Me.btnAlunos.Size = New System.Drawing.Size(160, 40)
+        Me.btnAlunos.Size = New System.Drawing.Size(213, 49)
         Me.btnAlunos.TabIndex = 1
         Me.btnAlunos.Text = "Gerir Alunos"
         Me.btnAlunos.UseVisualStyleBackColor = True
-        Me.btnCursos.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.btnCursos.Location = New System.Drawing.Point(45, 110)
+        '
+        'btnCursos
+        '
+        Me.btnCursos.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.btnCursos.Location = New System.Drawing.Point(181, 232)
+        Me.btnCursos.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnCursos.Name = "btnCursos"
-        Me.btnCursos.Size = New System.Drawing.Size(160, 40)
+        Me.btnCursos.Size = New System.Drawing.Size(213, 49)
         Me.btnCursos.TabIndex = 2
         Me.btnCursos.Text = "Gerir Cursos"
         Me.btnCursos.UseVisualStyleBackColor = True
+        '
+        'lblVersao
+        '
         Me.lblVersao.AutoSize = True
-        Me.lblVersao.Location = New System.Drawing.Point(10, 160)
+        Me.lblVersao.Location = New System.Drawing.Point(483, 437)
+        Me.lblVersao.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblVersao.Name = "lblVersao"
-        Me.lblVersao.Size = New System.Drawing.Size(97, 13)
+        Me.lblVersao.Size = New System.Drawing.Size(122, 16)
         Me.lblVersao.TabIndex = 3
         Me.lblVersao.Text = "Versão do Sistema"
+        '
+        'lblAlice
+        '
         Me.lblAlice.AutoSize = True
-        Me.lblAlice.Location = New System.Drawing.Point(10, 180)
+        Me.lblAlice.Location = New System.Drawing.Point(3, 351)
+        Me.lblAlice.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblAlice.Name = "lblAlice"
-        Me.lblAlice.Size = New System.Drawing.Size(137, 13)
+        Me.lblAlice.Size = New System.Drawing.Size(156, 16)
         Me.lblAlice.TabIndex = 4
-        Me.lblAlice.Text = "alice lombardi - 8211802"
+        Me.lblAlice.Text = "Alice Lombardi - 8211802"
+        '
+        'lblRafaela
+        '
         Me.lblRafaela.AutoSize = True
-        Me.lblRafaela.Location = New System.Drawing.Point(10, 200)
+        Me.lblRafaela.Location = New System.Drawing.Point(2, 410)
+        Me.lblRafaela.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblRafaela.Name = "lblRafaela"
-        Me.lblRafaela.Size = New System.Drawing.Size(138, 13)
+        Me.lblRafaela.Size = New System.Drawing.Size(159, 16)
         Me.lblRafaela.TabIndex = 5
-        Me.lblRafaela.Text = "Rafaela cancio - 7151625"
+        Me.lblRafaela.Text = "Rafaela Cancio - 7151625"
+        '
+        'lblVissolela
+        '
         Me.lblVissolela.AutoSize = True
-        Me.lblVissolela.Location = New System.Drawing.Point(10, 220)
+        Me.lblVissolela.Location = New System.Drawing.Point(3, 437)
+        Me.lblVissolela.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblVissolela.Name = "lblVissolela"
-        Me.lblVissolela.Size = New System.Drawing.Size(150, 13)
+        Me.lblVissolela.Size = New System.Drawing.Size(159, 16)
         Me.lblVissolela.TabIndex = 6
-        Me.lblVissolela.Text = "VISSOLELA CUNDI - 7790644"
+        Me.lblVissolela.Text = "Vissolela Cundi - 7790644"
+        '
+        'lblPalmira
+        '
         Me.lblPalmira.AutoSize = True
-        Me.lblPalmira.Location = New System.Drawing.Point(10, 240)
+        Me.lblPalmira.Location = New System.Drawing.Point(3, 383)
+        Me.lblPalmira.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblPalmira.Name = "lblPalmira"
-        Me.lblPalmira.Size = New System.Drawing.Size(148, 13)
+        Me.lblPalmira.Size = New System.Drawing.Size(160, 16)
         Me.lblPalmira.TabIndex = 7
-        Me.lblPalmira.Text = "PALMIRA SOLOchi - 7148400"
+        Me.lblPalmira.Text = "Palmira Solochi - 7148400"
+        '
+        'lblTurma
+        '
         Me.lblTurma.AutoSize = True
-        Me.lblTurma.Location = New System.Drawing.Point(10, 260)
+        Me.lblTurma.Location = New System.Drawing.Point(501, 453)
+        Me.lblTurma.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTurma.Name = "lblTurma"
-        Me.lblTurma.Size = New System.Drawing.Size(89, 13)
+        Me.lblTurma.Size = New System.Drawing.Size(104, 16)
         Me.lblTurma.TabIndex = 8
-        Me.lblTurma.Text = "turma 25.0082"
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.lblTurma.Text = "TURMA 25.0082"
+        '
+        'Form1
+        '
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.ClientSize = New System.Drawing.Size(250, 290)
+        Me.ClientSize = New System.Drawing.Size(618, 478)
         Me.Controls.Add(Me.lblTurma)
         Me.Controls.Add(Me.lblPalmira)
         Me.Controls.Add(Me.lblVissolela)
@@ -102,10 +140,12 @@ Partial Class Form1
         Me.Controls.Add(Me.btnAlunos)
         Me.Controls.Add(Me.lblTitulo)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "Form1"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Menu"
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
