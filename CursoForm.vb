@@ -74,14 +74,22 @@ Public Class CursoForm
     Private Sub btnExcluir_Click(sender As Object, e As EventArgs) Handles btnExcluir.Click
         If dgvCursos.SelectedRows.Count > 0 Then
             Dim id As Integer = CInt(dgvCursos.SelectedRows(0).Cells("CursoID").Value)
-            Using c As New SqlConnection(cs)
-                Dim cmd As New SqlCommand("DELETE FROM Cursos WHERE CursoID=@ID", c)
-                cmd.Parameters.AddWithValue("@ID", id)
-                c.Open()
-                cmd.ExecuteNonQuery()
-            End Using
-            LoadCs()
-            Clean()
+            Try
+                Using c As New SqlConnection(cs)
+                    c.Open()
+                    Dim delIns As New SqlCommand("DELETE FROM Inscricoes WHERE CursoID=@ID", c)
+                    delIns.Parameters.AddWithValue("@ID", id)
+                    delIns.ExecuteNonQuery()
+
+                    Dim cmd As New SqlCommand("DELETE FROM Cursos WHERE CursoID=@ID", c)
+                    cmd.Parameters.AddWithValue("@ID", id)
+                    cmd.ExecuteNonQuery()
+                End Using
+                LoadCs()
+                Clean()
+            Catch ex As Exception
+                MessageBox.Show("Erro ao excluir curso: " & ex.Message)
+            End Try
         End If
     End Sub
 
